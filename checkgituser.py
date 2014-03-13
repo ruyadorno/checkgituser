@@ -6,7 +6,7 @@ import sys
 
 dest_path = sys.argv[1]
 
-print 'Checking for .git/config files without an user email...\n'
+print 'Checking for .git/config files without an [user]...\n'
 
 for path, dirs, files in os.walk(dest_path):
     for filename in files:
@@ -18,7 +18,7 @@ for path, dirs, files in os.walk(dest_path):
             with open(fullpath, 'r') as f:
                 for line in f:
 
-                    if line.find('email') > -1:
+                    if line.find('[user]') > -1:
                         has_config = True
 
             if not has_config:
